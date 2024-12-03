@@ -5,6 +5,7 @@ FROM nginx:latest
 
 COPY ./sp/index.html  /usr/share/nginx/html/
 COPY ./sp/style.css  /usr/share/nginx/html/
+COPY ./sp/image.jpg /usr/share/nginx/html/
 
 EXPOSE 80
 
