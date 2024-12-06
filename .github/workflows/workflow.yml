@@ -13,14 +13,11 @@ jobs:
     steps:
       - name: Chekout Repository
         uses: actions/checkout@v4
-        with:
-          path: main
       
       - name: Check Working directory location, Terraform and Docker version
         shell: bash
         run: |
-         dir= pwd
-         cd $dir/main
+         pwd
          terraform -v 
          docker -v
 
