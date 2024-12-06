@@ -30,10 +30,6 @@ jobs:
         shell: bash
         run: terraform plan
 
-      - name: Print Terraform Plan
-        shell: bash
-        run: echo "${steps.plan.outputs.stdout}"
-
       - name: Terraform Apply Logic
         shell: bash
         run: terraform apply -auto-approve
