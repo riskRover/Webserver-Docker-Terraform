@@ -19,8 +19,8 @@ jobs:
       - name: Check Working directory location, Terraform and Docker version
         shell: bash
         run: |
-         pwd
-         cd $pwd/main
+         dir= pwd
+         cd $dir/main
          terraform -v 
          docker -v
 
