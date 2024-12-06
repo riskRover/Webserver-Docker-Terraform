@@ -9,6 +9,7 @@ on:
 
 jobs:
   Terraform-Docker:
+    runs-on: self-hosted
     steps:
       - name: Chekout Repository
         uses: actions/checkout@v4
