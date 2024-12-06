@@ -20,6 +20,7 @@ jobs:
         shell: bash
         run: |
          pwd
+         cd $pwd/main
          terraform -v 
          docker -v
 
