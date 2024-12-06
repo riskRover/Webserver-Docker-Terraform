@@ -1,0 +1,40 @@
+name: Run Docker Container with Terraform
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  Terraform-Docker:
+    steps:
+      - name: Chekout Repository
+        uses: actions/checkout@v4
+        with:
+          path: main
+      
+      - name: Check Working directory location, Terraform and Docker version
+        shell: bash
+        run: |
+         pwd
+         terraform -v 
+         docker -v
+
+      - name: Terraform init
+        shell: bash
+        run: terraform init
+
+      - name: Terraform plan
+        id: plan
+        shell: bash
+        run: terraform plan
+
+      - name: Print Terraform Plan
+        shell: bash
+        run: echo "${steps.plan.outputs.stdout}"
+
+      - name: Terraform Apply Logic
+        shell: bash
+        run: terraform apply -auto-approve
