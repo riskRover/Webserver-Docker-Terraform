@@ -28,7 +28,7 @@ jobs:
     runs-on: self-hosted
     steps:
        - name: Setup Docker 
-         uses: docker/setup-docker-action@v4.0.0  # docker/setup-buildx-action@v3
+         uses: docker/setup-docker-action@v3  # docker/setup-buildx-action@v3
 #         with:
 #           version: v0.10.0
 #           config: .github/buildkitd.toml
