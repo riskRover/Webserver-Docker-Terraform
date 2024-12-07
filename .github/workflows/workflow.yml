@@ -21,7 +21,9 @@ jobs:
         run: export PATH="/usr/local/bin:$PATH"
       - name: Check Terraform Version
         shell: bash
-        run: terraform -v
+        run: |
+         pwd
+         terraform version
   Docker:
     runs-on: self-hosted
     steps:
