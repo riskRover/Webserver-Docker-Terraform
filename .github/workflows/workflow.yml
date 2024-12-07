@@ -29,6 +29,14 @@ jobs:
     steps:
        - name: Setup Docker 
          uses: docker/setup-docker-action@v3  # docker/setup-buildx-action@v3
+         with:
+          daemon-config: |
+            {
+              "debug": true,
+              "features": {
+                "containerd-snapshotter": true
+              }
+            }
 #         with:
 #           version: v0.10.0
 #           config: .github/buildkitd.toml
