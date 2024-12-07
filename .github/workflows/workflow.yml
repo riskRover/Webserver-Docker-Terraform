@@ -28,7 +28,8 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Setup Docker
-        uses: actions/setup-docker@v2
+        uses: actions/checkout@v3
+        uses: actions/setup-docker@v3
         with:
           version: 'latest'
 # buildx-version: ''
