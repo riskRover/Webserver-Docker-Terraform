@@ -29,16 +29,16 @@ jobs:
     steps:
        - name: Setup Docker 
          uses: docker/setup-buildx-action@v3
+       - name: Check Docker Version 
+         shell: bash
+         run: docker -v
 #      - name: setup-docker
 #        uses: docker-practice/actions-setup-docker@v1
 #      - name: Setup Docker
 #        uses: actions/setup-docker@v3
 #        with:
 #          docker_version: '20.10'
-# buildx-version: ''
-      - name: Check Docker Version 
-        shell: bash
-        run: docker -v
+#          buildx-version: ''
   Build:
     needs: [Terraform,Docker]
     runs-on: self-hosted
