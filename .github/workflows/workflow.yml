@@ -16,6 +16,9 @@ jobs:
         with: 
           terraform_version: '1.4.0'
           cli_config_credentials_hostname: 'app.terraform.io'
+      - name: Export Path
+        shell: bash
+        run: export PATH="/usr/local/bin:$PATH"
       - name: Check Terraform Version
         shell: bash
         run: terraform -v
