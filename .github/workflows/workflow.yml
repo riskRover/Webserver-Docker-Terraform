@@ -27,12 +27,12 @@ jobs:
   Docker:
     runs-on: self-hosted
     steps:
-      - name: setup-docker
-        uses: docker-practice/actions-setup-docker@v1
-#      - name: Setup Docker
-#        uses: actions/setup-docker@v3
-#        with:
-#          version: 'latest'
+#      - name: setup-docker
+#        uses: docker-practice/actions-setup-docker@v1
+      - name: Setup Docker
+        uses: actions/setup-docker@v3
+        with:
+          docker_version: '20.10'
 # buildx-version: ''
       - name: Check Docker Version 
         shell: bash
