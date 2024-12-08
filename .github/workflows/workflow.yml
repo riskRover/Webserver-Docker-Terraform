@@ -8,56 +8,18 @@ on:
       - 'v*.*.*'
 
 jobs:
-  Terraform:
-    runs-on: self-hosted
-    steps: 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-        with: 
-          terraform_version: '1.4.0'
-          cli_config_credentials_hostname: 'app.terraform.io'
-      - name: Export Path
-        shell: bash
-        run: export PATH="/usr/local/bin:$PATH"
-      - name: Check Terraform Version
-        shell: bash
-        run: |
-         pwd
-         terraform version
-  Docker:
-    runs-on: self-hosted
-    steps:
-       - name: Setup Docker 
-         uses: docker-practice/actions-setup-docker@v1
-         timeout-minutes: 12
-# docker/setup-docker-action@master  
-# docker/setup-buildx-action@v3
-#         with:
-#           version: v0.10.0
-#           config: .github/buildkitd.toml
-       - name: Check Docker Version 
-         shell: bash
-         run: |
-          set -x
-          docker version 
-#      - name: setup-docker
-#        uses: docker-practice/actions-setup-docker@v1
-#      - name: Setup Docker
-#        uses: actions/setup-docker@v3
-#        with:
-#          docker_version: '20.10'
-#          buildx-version: ''
   Build:
-    needs: [Terraform,Docker]
     runs-on: self-hosted
     steps:
       - name: Chekout Repository
         uses: actions/checkout@v4
-      - name: Check Working directory location
+      - name: Check Working directory location and Prerequisites
         shell: bash
         run: |
          pwd
          ls -la
+         terraform version
+         docker version
       - name: Terraform init
         run: terraform init
       - name: Terraform plan
