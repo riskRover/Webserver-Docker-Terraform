@@ -38,8 +38,8 @@ jobs:
         if: ${{ steps.check_container.outputs.status == 'running' }}
         run: |
           echo "Stopping the Docker container..."
-          terraform init
-          terraform destroy -auto-approve
+          docker stop webcontainer || true
+          docker rm webcontainer || true
       - name: Terraform init
         run: terraform init
       - name: Terraform plan
