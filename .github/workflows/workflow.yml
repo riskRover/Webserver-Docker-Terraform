@@ -14,8 +14,11 @@ on:
         default: 'webcontainer'
 
 jobs:
-  Build:
+  Check-Docker-Status:
     runs-on: self-hosted
+    if: github.event_name = 'workflow_dispatch' # Run only for Manual triggers
+    outputs:
+      container_status: ${{ steps.check_container.outputs.status }}
     steps:
       - name: Cleanup build folder
         run: |
@@ -28,10 +31,10 @@ jobs:
       - name: Check Working directory location and Prerequisites
         shell: bash
         run: |
-         pwd
-         ls -la
-         terraform version
-         docker version
+          pwd
+          ls -la
+          terraform version
+          docker version
       - name: Set container name
         id: set_container_name
         run: |
@@ -52,6 +55,31 @@ jobs:
           echo "Stopping the Docker container..."
           docker stop ${{ env.CONTAINER_NAME }} || true
           docker rm ${{ env.CONTAINER_NAME }} || true
+      - name: Destroy Existing Terraform Infra
+        run: |
+          terraform init
+          terraform destroy -auto-approve
+  Terraform:
+    runs-on: self-hosted
+    if: github.event_name != 'workflow_dispatch' # Run only for automatic triggers
+    outputs:
+      container_status: ${{ steps.check_container.outputs.status }}
+    steps:
+      - name: Cleanup build folder
+        run: |
+          ls -la ./
+          rm -rf ./* || true
+          rm -rf ./.??* || true
+          ls -la ./
+      - name: Chekout Repository
+        uses: actions/checkout@v4
+      - name: Check Working directory location and Prerequisites
+        shell: bash
+        run: |
+          pwd
+          ls -la
+          terraform version
+          docker version
       - name: Terraform init
         run: terraform init
       - name: Terraform plan
