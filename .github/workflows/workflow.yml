@@ -6,6 +6,12 @@ on:
       - 'ma**'
     tags:
       - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      container_name:
+        description: 'Name of the Docker container'
+        required: false
+        default: 'webcontainer'
 
 jobs:
   Build:
@@ -26,10 +32,16 @@ jobs:
          ls -la
          terraform version
          docker version
+      - name: Set container name
+        id: set_container_name
+        run: |
+          CONTAINER_NAME="${{ github.event.inputs.container_name || 'webcontainer' }}"
+          echo "CONTAINER_NAME=${CONTAINER_NAME}" >> $GITHUB_ENV
+          echo "Container name is set to: ${CONTAINER_NAME}"
       - name: Check Docker Container is exist
         id: check_container
         run: |
-          if docker ps --filter "name=webcontainer" --filter "status=running" | grep webcontainer; then
+          if docker ps --filter "name=${{ env.CONTAINER_NAME }}" --filter "status=running" | grep ${{ env.CONTAINER_NAME }}; then
             echo "status=running" >> $GITHUB_OUTPUT
           else
             echo "status=not_running" >> $GITHUB_OUTPUT
@@ -38,8 +50,8 @@ jobs:
         if: ${{ steps.check_container.outputs.status == 'running' }}
         run: |
           echo "Stopping the Docker container..."
-          docker stop webcontainer || true
-          docker rm webcontainer || true
+          docker stop ${{ env.CONTAINER_NAME }} || true
+          docker rm ${{ env.CONTAINER_NAME }} || true
       - name: Terraform init
         run: terraform init
       - name: Terraform plan
