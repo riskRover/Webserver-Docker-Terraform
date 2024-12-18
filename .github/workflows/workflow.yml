@@ -29,7 +29,7 @@ jobs:
       - name: Check Docker Container is exist
         id: check_container
         run: |
-          if docker ps --filter "name=webcontainer" --filter "status=running" | grep nginx-container; then
+          if docker ps --filter "name=webcontainer" --filter "status=running" | grep webcontainer; then
             echo "status=running" >> $GITHUB_OUTPUT
           else
             echo "status=not_running" >> $GITHUB_OUTPUT
