@@ -95,7 +95,7 @@ EOF
 ```
 ### Setup and Deployment
 #### 1. Deploying on AWS EC2 
-You can refer to page for more details [Execute-on-AWS-Virtual-Machine](https://github.com/riskRover/Webserver-Docker-Terraform/blob/feature/updates-mdfiles/Execute-on-AWS-Virtual-Machine(EC2).md#running-an-nginx-webserver-index-page-in-a-docker-container-using-terraform-on-aws-ec2)
+You can refer to page for more details [Execute-on-AWS-Virtual-Machine](https://github.com/riskRover/Webserver-Docker-Terraform/blob/feature/updates-mdfiles/Execute-on-AWS-Virtual-Machine.md#running-an-nginx-webserver-index-page-in-a-docker-container-using-terraform-on-aws-ec2)
 
 #### 2. Deploying on Local Machine
 You can refer to page for more details [Execute-on-local-machine](https://github.com/riskRover/Webserver-Docker-Terraform/blob/feature/updates-mdfiles/Execute-on-local-machine.md#run-an-nginx-webserver-index-page-in-a-docker-container-using-terraform)
