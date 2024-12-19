@@ -14,7 +14,7 @@ on:
         default: 'webcontainer'
 
 jobs:
-  Check-Docker-Status:
+  Stop-Nginx-Webserver-Container:
     runs-on: self-hosted
     if: github.event_name == 'workflow_dispatch' # Run only for Manual triggers
     outputs:
@@ -59,7 +59,7 @@ jobs:
         run: |
           terraform init
           terraform destroy -auto-approve
-  Terraform:
+  Start-Nginx-Webserver-Container:
     runs-on: self-hosted
     if: github.event_name != 'workflow_dispatch' # Run only for automatic triggers
     outputs:
