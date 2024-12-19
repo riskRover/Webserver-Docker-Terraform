@@ -1,4 +1,4 @@
-# Terraform and Docker Workflow
+# Terraform and Docker Workflow Information
 
 This repository includes a GitHub Actions workflow that integrates Docker and Terraform to manage and automate Docker container deployments. The workflow consists of two jobs:
 
