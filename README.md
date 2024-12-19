@@ -95,13 +95,13 @@ EOF
 ```
 ### Setup and Deployment
 #### 1. Deploying on AWS EC2 
-You can refer to page for more details [Execute-on-AWS-Virtual-Machine](https://github.com/riskRover/Webserver-Docker-Terraform/blob/feature/updates-mdfiles/Execute-on-AWS-Virtual-Machine.md#running-an-nginx-webserver-index-page-in-a-docker-container-using-terraform-on-aws-ec2)
+You can refer to page for more details [Execute-on-AWS-Virtual-Machine](https://github.com/riskRover/Webserver-Docker-Terraform/blob/main/Execute-on-AWS-Virtual-Machine.md#running-an-nginx-webserver-index-page-in-a-docker-container-using-terraform-on-aws-ec2)
 
 #### 2. Deploying on Local Machine
-You can refer to page for more details [Execute-on-local-machine](https://github.com/riskRover/Webserver-Docker-Terraform/blob/feature/updates-mdfiles/Execute-on-local-machine.md#run-an-nginx-webserver-index-page-in-a-docker-container-using-terraform)
+You can refer to page for more details [Execute-on-local-machine](https://github.com/riskRover/Webserver-Docker-Terraform/blob/main/Execute-on-local-machine.md#run-an-nginx-webserver-index-page-in-a-docker-container-using-terraform)
 
 #### 3. GitHub Actions (CI/CD)
-You can refer to page for more details [Workflow Information](https://github.com/riskRover/Webserver-Docker-Terraform/blob/feature/updates-mdfiles/.github/workflows/workflowinfo.md#terraform-and-docker-workflow-information)
+You can refer to page for more details [Workflow Information](https://github.com/riskRover/Webserver-Docker-Terraform/blob/main/.github/workflows/workflowinfo.md#terraform-and-docker-workflow-information)
 
 ### Running Containerised Application 
 Below Application webpage accesible after succssful running GitHub Actions workflow.
